@@ -38,7 +38,7 @@ const App2ndHeader = () => {
                     <Nav.Link eventKey="link-1" style={{ color: hoveredLinks[1] ? '#FFFFFF' : '#999999' }} onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={() => handleMouseLeave(1)}>Sản phẩm</Nav.Link>
                     <Nav.Link eventKey="link-2" style={{ color: hoveredLinks[2] ? '#FFFFFF' : '#999999' }} onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={() => handleMouseLeave(2)}>Lịch sử</Nav.Link>
                     <Nav.Link eventKey="disabled" style={{ color: hoveredLinks[3] ? '#FFFFFF' : '#999999' }} onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={() => handleMouseLeave(3)}>Yêu thích</Nav.Link>
-                    <Nav.Link href="/home" style={{ color: hoveredLinks[4] ? '#FFFFFF' : '#999999' }} onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={() => handleMouseLeave(4)}>Điều khoản</Nav.Link>
+                    <Nav.Link href="/account" style={{ color: hoveredLinks[4] ? '#FFFFFF' : '#999999' }} onMouseEnter={() => handleMouseEnter(4)} onMouseLeave={() => handleMouseLeave(4)}>Điều khoản</Nav.Link>
                     </Nav>
                 </Col>
                 </Row>
