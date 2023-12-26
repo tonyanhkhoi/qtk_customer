@@ -1,25 +1,33 @@
 .red {
-    color: red;
-    border: 2px solid red;
+  color: red;
+  border: 2px solid red;
 }
 
 .green {
-    color: green;
-    border: 2px solid green;
+  color: green;
+  border: 2px solid green;
 }
 
 .center {
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;    
-    padding: 10px;
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
 }
 
 .nav-link-custom {
-    color: #999999;
+  color: #999999;
 }
-  
+
 .nav-link-custom:hover,
 .nav-link-custom:active {
-    color: white;
+  color: white;
+}
+.hideScrollBar::-webkit-scrollbar {
+  display: none;
+}
+
+.hideScrollBar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
