@@ -29,33 +29,34 @@ const Checkout = () => {
   };
   useEffect(() => {
     // Retrieve cart items from local storage
-    const storedEmail = localStorage.getItem('userInfoEmail');
-    console.log('store email', storedEmail);
+    const storedEmail = localStorage.getItem("userInfoEmail");
+    console.log("store email", storedEmail);
     if (storedEmail) {
       setEmail(storedEmail);
       // Retrieve user details based on the email as the key
       const storedName = localStorage.getItem(`userInfoName_${storedEmail}`);
       const storedImage = localStorage.getItem(`userInfoImage_${storedEmail}`);
-      const storedAddress = localStorage.getItem(`userInfoAddress_${storedEmail}`);
+      const storedAddress = localStorage.getItem(
+        `userInfoAddress_${storedEmail}`
+      );
       const storedPhone = localStorage.getItem(`userInfoPhone_${storedEmail}`);
-      
-    if (storedName) {
-      setName(storedName);
-    }
 
-    if (storedPhone) {
-      setPhone(storedPhone);
-    }
+      if (storedName) {
+        setName(storedName);
+      }
 
-    if (storedAddress) {
-      setAddress(storedAddress);
-    }
-    const storedCartItems = localStorage.getItem(`cartItems${storedEmail}`);
-    if (storedCartItems) {
-      setCartItems(JSON.parse(storedCartItems));
-    }
-    }
+      if (storedPhone) {
+        setPhone(storedPhone);
+      }
 
+      if (storedAddress) {
+        setAddress(storedAddress);
+      }
+      const storedCartItems = localStorage.getItem(`cartItems${storedEmail}`);
+      if (storedCartItems) {
+        setCartItems(JSON.parse(storedCartItems));
+      }
+    }
 
     // Retrieve user information from local stora
   }, []);
@@ -65,6 +66,8 @@ const Checkout = () => {
   };
 
   const handleCheckout = () => {
+    const storedEmail = localStorage.getItem("userInfoEmail");
+    if (storedEmail == "0") router.push("/login");
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append(
@@ -120,18 +123,21 @@ const Checkout = () => {
     }
     createInvoice();
     setShowModal(true);
-
   };
   const createInvoice = () => {
-    const storedEmail = localStorage.getItem('userInfoEmail');
+    const storedEmail = localStorage.getItem("userInfoEmail");
     const currentDate = new Date();
-    const formattedDate = `${currentDate.getFullYear()}${String(currentDate.getMonth() + 1).padStart(2, '0')}${String(currentDate.getDate()).padStart(2, '0')}`;
-  
+    const formattedDate = `${currentDate.getFullYear()}${String(
+      currentDate.getMonth() + 1
+    ).padStart(2, "0")}${String(currentDate.getDate()).padStart(2, "0")}`;
+
     // Count the number of invoices created on the current date
     const invoicesString = localStorage.getItem(`Invoices${storedEmail}`);
     const invoices = invoicesString ? JSON.parse(invoicesString) : [];
-    const invoicesOnCurrentDate = invoices.filter((invoice: { date: string; }) => invoice.date === formattedDate).length;
-  
+    const invoicesOnCurrentDate = invoices.filter(
+      (invoice: { date: string }) => invoice.date === formattedDate
+    ).length;
+
     // Create the invoice with a unique ID based on the date and count
     const invoice = {
       id: `${formattedDate}${invoicesOnCurrentDate + 1}`,
@@ -139,15 +145,15 @@ const Checkout = () => {
       total: calculateTotal(),
       items: cartItems,
     };
-  
+
     // Save the invoice to local storage with the user's email as part of the key
     invoices.push(invoice);
     localStorage.setItem(`Invoices${storedEmail}`, JSON.stringify(invoices));
-  
+
     // Clear the cart items from local storage
     localStorage.removeItem(`cartItems${storedEmail}`);
   };
-  
+
   const handleCloseModal = () => {
     // Close the modal
     setShowModal(false);
