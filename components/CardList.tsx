@@ -38,6 +38,7 @@ const getProduct = async (): Promise<CardData[]> => {
             id: any;
             description: any;
             categories: { name: any }[];
+            images: any [];
           }) => {
             return {
               title: value.name,
@@ -45,6 +46,7 @@ const getProduct = async (): Promise<CardData[]> => {
               id: value.id,
               description: value.description,
               category: value.categories[0].name,
+              imageSrc: value.images[0],
             } as CardData;
           }
         );

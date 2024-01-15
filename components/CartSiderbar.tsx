@@ -118,7 +118,7 @@ const ShoppingCart: React.FC<ShoppingCartProps> = ({ onClose }) => {
                 <Button variant="secondary" onClick={onClose}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleCheckout}>Checkout</Button>
+                <Button variant="success" onClick={handleCheckout}>Checkout</Button>
               </div>
             </Col>
           </Row>

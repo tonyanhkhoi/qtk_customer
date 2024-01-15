@@ -137,10 +137,17 @@ const Checkout = () => {
     const invoicesOnCurrentDate = invoices.filter(
       (invoice: { date: string }) => invoice.date === formattedDate
     ).length;
+    const generateRandomTwoDigitNumber = () => {
+      // Generate a random number between 1 and 99 (inclusive)
+      return Math.floor(Math.random() * 99) + 1;
+    };
+    
+    const formattedRandomNumber = generateRandomTwoDigitNumber().toString().padStart(2, '0');
+    
 
     // Create the invoice with a unique ID based on the date and count
     const invoice = {
-      id: `${formattedDate}${invoicesOnCurrentDate + 1}`,
+      id: `${formattedDate}${invoicesOnCurrentDate + formattedRandomNumber}`,
       date: new Date().toLocaleDateString(),
       total: calculateTotal(),
       items: cartItems,
@@ -159,7 +166,7 @@ const Checkout = () => {
     setShowModal(false);
 
     // Redirect to the home page
-    router.push("/");
+    router.push("/user/history");
   };
   return (
     <Row className="d-flex">

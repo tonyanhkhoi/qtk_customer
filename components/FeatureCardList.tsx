@@ -44,6 +44,7 @@ const getProduct = async (): Promise<CardData[]> => {
       id: value.id,
       description: value.description,
       category: value.categories[0]?.name || "Uncategorized",
+      imageSrc: value.images[0],
     })) as CardData[];
   } catch (error) {
     console.error("Error fetching products:", error);

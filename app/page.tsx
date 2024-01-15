@@ -28,8 +28,8 @@ export default function Home() {
       <h1 style={{ fontSize: '2em', marginBottom: '20px' }}>Welcome to QTK Store</h1>
 
       {/* Display FeaturedCardList */}
-      <FeaturedCardList itemsToShow={3} deckTitle={'Popular'}/>
-      <FeaturedCardList itemsToShow={3} deckTitle={'Best Seller'}/>
+      <FeaturedCardList itemsToShow={4} deckTitle={'Popular'}/>
+      <FeaturedCardList itemsToShow={4} deckTitle={'Best Seller'}/>
     </div>
   );
 }
